@@ -11,5 +11,5 @@ Game.prototype.addSnake = function (snake) {
 };
 
 Game.prototype.updateScore = function () {
-  this.score++;
+  this.score+=10;
 };
