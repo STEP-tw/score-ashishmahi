@@ -3,18 +3,22 @@ let numberOfCols=120;
 const game = new Game(numberOfRows,numberOfCols);
 let animator=undefined;
 
+const displaySnakeOnDisplay = function(oldHead,oldTail,head){
+  paintBody(oldHead);
+  unpaintSnake(oldTail);
+  paintHead(head);
+}
+
 const animateSnake=function() {
   let oldHead=game.snake.getHead();
   let oldTail=game.snake.move();
   let head=game.snake.getHead();
-  paintBody(oldHead);
-  unpaintSnake(oldTail);
-  paintHead(head);
+  displaySnakeOnDisplay(oldHead,oldTail,head);
   if(head.isSameCoordAs(game.food)) {
     game.snake.grow();
     game.updateScore();
-    updateScoreOnBoard(game.score);
     game.createFood(numberOfRows,numberOfCols);
+    updateScoreOnBoard(game.score);
     drawFood(game.food);
   }
 }
