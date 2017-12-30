@@ -40,7 +40,7 @@ const drawFood=function(food) {
   paintCell(food,"food");
 }
 
-const updateScore = function(score){
+const updateScoreOnBoard = function(score){
   let scoreHolder = document.getElementById("scoreHolder");
   scoreHolder.innerText = score;
 }

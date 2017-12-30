@@ -5,8 +5,7 @@ Update the score as the snake eats a piece of food.
 RulesOfScoring:
 
   ✔ Eating each piece of food gives the player 10 points. @done(2017-12-30 14:55) @project(RulesOfScoring)
-  ☐ If the player eats 10 pieces of food, the user gets 100 points and so on.
-  ☐ Update this information at the bottom of the snake viewport.
+  ✔ Update this information at the bottom of the snake viewport. @done(2017-12-30 15:02) @project(RulesOfScoring)
 
 
 
@@ -16,4 +15,4 @@ RulesOfScoring:
   ✔ create a game constructor @done(2017-12-30 14:55)
   ✔ add necessory behaviour and data to game @done(2017-12-30 14:55)
   ✔ then add feature to update score on eating food @done(2017-12-30 14:57)
-  ✔ increase score bye feature added; @done(2017-12-30 14:57)
+  ✔ increase score by feature added; @done(2017-12-30 14:57)
