@@ -1,5 +1,4 @@
 let game=undefined;
-let food=undefined;
 let numberOfRows=60;
 let numberOfCols=120;
 let animator=undefined;
@@ -49,9 +48,6 @@ const createSnake=function() {
   game.addSnake(snake);
 }
 
-const createFood=function(numberOfRows,numberOfCols) {
-  food=generateRandomPosition(numberOfCols,numberOfRows);
-}
 
 const createGame=function() {
   let topLeft=new Position(0,0,"east");
