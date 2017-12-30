@@ -39,6 +39,10 @@ Game.prototype.getFood=function() {
   return this.food;
 }
 
+Game.prototype.getScore=function() {
+  return this.score;
+}
+
 Game.prototype.move=function() {
   let details={};
   details.oldHead=this.snake.getHead();

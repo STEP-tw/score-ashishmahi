@@ -13,7 +13,8 @@ const animateSnake=function() {
     game.createFood();
     drawFood(game.getFood());
     game.updateScore();
-    updateScoreOnBoard(game.score)
+    let score = game.getScore();
+    updateScoreOnBoard(score);
   }
 }
 
