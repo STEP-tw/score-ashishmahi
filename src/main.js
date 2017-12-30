@@ -1,9 +1,6 @@
 let numberOfRows=60;
 let numberOfCols=120;
 const game = new Game(numberOfRows,numberOfCols);
-// let snake=undefined;
-// let food=undefined;
-
 let animator=undefined;
 
 const animateSnake=function() {
