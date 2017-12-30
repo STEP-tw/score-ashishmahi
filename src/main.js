@@ -1,38 +1,33 @@
+let game=undefined;
+let food=undefined;
 let numberOfRows=60;
 let numberOfCols=120;
-const game = new Game(numberOfRows,numberOfCols);
 let animator=undefined;
 
-const displaySnakeOnDisplay = function(oldHead,oldTail,head){
-  paintBody(oldHead);
-  unpaintSnake(oldTail);
-  paintHead(head);
-}
-
 const animateSnake=function() {
-  let oldHead=game.snake.getHead();
-  let oldTail=game.snake.move();
-  let head=game.snake.getHead();
-  displaySnakeOnDisplay(oldHead,oldTail,head);
-  if(head.isSameCoordAs(game.food)) {
-    game.snake.grow();
+  let details=game.move();
+  paintBody(details.oldHead);
+  unpaintSnake(details.oldTail);
+  paintHead(details.head);
+  if(game.hasSnakeEatenFood()) {
+    game.grow();
+    game.createFood();
+    drawFood(game.getFood());
     game.updateScore();
-    game.createFood(numberOfRows,numberOfCols);
-    updateScoreOnBoard(game.score);
-    drawFood(game.food);
+    updateScoreOnBoard(game.score)
   }
 }
 
 const changeSnakeDirection=function(event) {
   switch (event.code) {
     case "KeyA":
-      game.snake.turnLeft();
+      game.turnLeft();
       break;
     case "KeyD":
-      game.snake.turnRight();
+      game.turnRight();
       break;
     case "KeyC":
-      game.snake.grow();
+      game.grow();
       break;
     default:
   }
@@ -44,13 +39,33 @@ const addKeyListener=function() {
   grid.focus();
 }
 
+const createSnake=function() {
+  let tail=new Position(12,10,"east");
+  let body=[];
+  body.push(tail);
+  body.push(tail.next());
+  let head=tail.next().next();
+  snake=new Snake(head,body);
+  game.addSnake(snake);
+}
+
+const createFood=function(numberOfRows,numberOfCols) {
+  food=generateRandomPosition(numberOfCols,numberOfRows);
+}
+
+const createGame=function() {
+  let topLeft=new Position(0,0,"east");
+  let bottomRight=new Position(numberOfCols,numberOfRows,"east");
+  game=new Game(topLeft,bottomRight);
+}
 
 const startGame=function() {
-  game.createAndAddSnake();
+  createGame();
+  createSnake();
   drawGrids(numberOfRows,numberOfCols);
-  drawSnake(game.snake);
-  game.createFood(numberOfRows,numberOfCols);
-  drawFood(game.food);
+  drawSnake(game.getSnake());
+  game.createFood();
+  drawFood(game.getFood());
   addKeyListener();
   animator=setInterval(animateSnake,140);
 }

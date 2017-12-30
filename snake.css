@@ -25,9 +25,15 @@
   background-color: blue;
   border-radius: 50%;
 }
+
 .scoreBoard{
   text-align: center;
   position: fixed;
   margin-left: 700px;
   margin-top: 10px;
+}
+
+.super-food{
+  background-color: green;
+  border-radius: 50%;
 }
